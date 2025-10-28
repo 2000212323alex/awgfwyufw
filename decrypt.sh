@@ -15,10 +15,7 @@ if [ ! -f "flag.enc" ]; then
 fi
 
 # Decrypt the flag
-openssl enc -d -aes-256-cbc -pbkdf2 -iter 100000 -salt -in flag.enc -out flag.txt -pass pass:"$KEY"
-
-# Check if decryption was successful
-if [ $? -eq 0 ]; then
+if openssl enc -d -aes-256-cbc -pbkdf2 -iter 100000 -salt -in flag.enc -out flag.txt -pass pass:"$KEY"; then
     echo "Decryption successful! Output saved to flag.txt"
     cat flag.txt
 else
