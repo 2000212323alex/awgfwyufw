@@ -29,6 +29,7 @@ cat flag.txt
 #### Method 3: With sudo (if needed)
 
 ```bash
+KEY='mysecretkey123'
 sudo openssl enc -d -aes-256-cbc -pbkdf2 -iter 100000 -salt -in flag.enc -out flag.txt -pass pass:"$KEY"
 ```
 
@@ -42,3 +43,10 @@ sudo openssl enc -d -aes-256-cbc -pbkdf2 -iter 100000 -salt -in flag.enc -out fl
 ### Note
 
 The key used for encryption is: `mysecretkey123`
+
+**⚠️ Security Warning:** This key is provided for demonstration and testing purposes only. In production environments:
+- Never commit encryption keys to version control
+- Use secure key management systems (e.g., HashiCorp Vault, AWS KMS, Azure Key Vault)
+- Use environment variables or secure configuration management
+- Rotate keys regularly
+- Follow your organization's security policies
